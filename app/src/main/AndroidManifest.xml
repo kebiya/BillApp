@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yang.bill">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:name="com.yang.bill.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.yang.bill.ui.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.yang.bill.ui.activity.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.LandActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.BillAddActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.UserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.yang.bill.ui.activity.BillSortActivity"
+            android:screenOrientation="portrait"/>
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.yang.bill.BmobContentProvider">
+        </provider>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.yang.bill.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

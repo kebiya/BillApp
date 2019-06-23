@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="?attr/colorPrimary"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/back_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/back_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:onClick="onClick"
+                    android:paddingRight="10dp"
+                    android:src="@mipmap/ic_back" />
+
+                <TextView
+                    android:id="@+id/mine_frag_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/back_btn"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="明细"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/tb_note_outcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tb_outcome_selector"
+                    android:text="支出"
+                    android:textColor="@drawable/tb_text_selector"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tb_note_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tb_note_outcome"
+                    android:background="@drawable/tb_income_selector"
+                    android:text="收入"
+                    android:textColor="@drawable/tb_text_selector"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tb_note_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:maxLength="11"
+            android:text="0.00"
+            android:textColor="#00aa66"
+            android:textSize="34sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:background="#00aa66" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:drawableLeft="@drawable/category"
+                android:text="分类"
+                android:drawablePadding="12dp"
+                android:textColor="@color/material_grey_600"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingRight="10dp"
+                android:layout_marginEnd="30dp"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/line_gray"/>
+
+        <LinearLayout
+            android:id="@+id/ll_pay_type"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:drawableLeft="@drawable/icon_pay_account"
+                android:text="账户"
+                android:drawablePadding="12dp"
+                android:textColor="@color/material_grey_600"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tb_note_cash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="7dp"
+                android:drawableRight="@drawable/icon_right"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="现金"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/line_gray"/>
+
+        <LinearLayout
+            android:id="@+id/ll_note"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:drawableLeft="@drawable/icon_note"
+                android:text="备注"
+                android:drawablePadding="12dp"
+                android:textColor="@color/material_grey_600"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_note"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="7dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:maxLength="100"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:hint="..."/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/line_gray"/>
+
+        <TextView
+            android:id="@+id/tb_note_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/shape_tb_cash"
+            android:layout_margin="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="6dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="7dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    >
+
+    <androidx.viewpager.widget.ViewPager
+    android:id="@+id/viewpager_item"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+        android:visibility="gone"
+    />
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/viewpager_item"
+        android:visibility="gone"
+    >
+
+    <LinearLayout
+    android:id="@+id/layout_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="horizontal" >
+    </LinearLayout>
+    </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/select_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape_tb_calc"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        style="@style/horizontal_decoration_style"
+        android:layout_above="@+id/bottom"
+        android:background="#8c8c8c" />
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tb_calc_num_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radius_click"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="1"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <TextView
+                android:id="@+id/tb_calc_num_4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radius_click"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="4"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <TextView
+                android:id="@+id/tb_calc_num_7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radius_click"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="7"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <TextView
+                android:id="@+id/tb_calc_num_dot"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radius_click"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="."
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/vertical_decoration_style"
+            android:background="#8c8c8c" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tb_calc_num_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="2"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <View
+                    style="@style/vertical_decoration_style"
+                    android:background="#8c8c8c" />
+
+                <TextView
+                    android:id="@+id/tb_calc_num_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="3"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tb_calc_num_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="5"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <View
+                    style="@style/vertical_decoration_style"
+                    android:background="#8c8c8c" />
+
+                <TextView
+                    android:id="@+id/tb_calc_num_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="6"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tb_calc_num_8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="8"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <View
+                    style="@style/vertical_decoration_style"
+                    android:background="#8c8c8c" />
+
+                <TextView
+                    android:id="@+id/tb_calc_num_9"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="9"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_decoration_style"
+                android:background="#8c8c8c" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tb_calc_num_0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_radius_click"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/vertical_decoration_style"
+            android:background="#8c8c8c" />
+
+        <View
+            style="@style/vertical_decoration_style"
+            android:background="#8c8c8c" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/tb_calc_num_del"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/ic_tb_calc_del" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tb_calc_num_done"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimary"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
